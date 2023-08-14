@@ -6,7 +6,7 @@
 /*   By: ssibai <ssibai@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 20:49:28 by ssibai            #+#    #+#             */
-/*   Updated: 2023/08/13 19:15:00 by ssibai           ###   ########.fr       */
+/*   Updated: 2023/08/14 22:38:01 by ssibai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@
 	this function is to initialize the list
 	returns true if list was set
 */
-int	set_list(t_list *head)
+int	set_list(t_list **head)
 {
-	head = (t_list *)malloc(sizeof(t_list));
-	if (!head)
+	*head = (t_list *)malloc(sizeof(t_list));
+	if (!*head)
 		return (0);
+	(*head)->content = 0;
+	(*head) -> next = NULL;
 	return (1);
 }
 
@@ -40,10 +42,12 @@ int	fill_list(char *buff, t_list *head)
 		temp -> content = *buff;
 		temp -> next = (t_list *)malloc(sizeof(t_list));
 		temp = temp -> next;
+		if (!temp)
+			return (0);
 		buff++;
 	}
-	free (temp);
-	temp = NULL;
+	// free (temp);
+	// temp = NULL;
 	return (1);
 }
 
@@ -68,7 +72,8 @@ int	line_finder(t_list *head)
 		i++;
 		temp = iterator;
 		iterator = iterator -> next;
-		free (temp);
+		
+		// free (temp);
 	}
 	return (-1);
 }
@@ -76,16 +81,16 @@ int	line_finder(t_list *head)
 /*
 	reads from list and pops that character out of the list
 */
-char	cpy_list(t_list *head)
+char	cpy_list(t_list **head)
 {
 	char	c;
-	t_list	*temp;
+	t_list	**temp;
 	
-	temp = head;
-	c = head -> content;
-	head = head -> next;
-	free (temp);
-	temp = NULL;
+	*temp = (*head);
+	c = (*head) -> content;
+	(*head) = (*head) -> next;
+	free (*temp);
+	*temp = NULL;
 	return	c;
 }
 
