@@ -6,7 +6,7 @@
 /*   By: ssibai <ssibai@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 20:49:40 by ssibai            #+#    #+#             */
-/*   Updated: 2023/08/14 22:15:12 by ssibai           ###   ########.fr       */
+/*   Updated: 2023/08/26 16:44:04 by ssibai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ typedef struct s_list
 
 char	*get_next_line(int fd);
 char	cpy_list(t_list **head);
-int	line_finder(t_list *head);
-int	fill_list(char *buff, t_list *head);
-int	set_list(t_list **head);
-char	*get_line(t_list *head);
+int		line_finder(t_list **head);
+int		fill_list(char *buff, t_list *head);
+void	set_list(t_list **head);
+char	*get_line(t_list *head, int end_index);
 
 #endif

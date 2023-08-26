@@ -6,7 +6,7 @@
 /*   By: ssibai <ssibai@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/10 20:49:28 by ssibai            #+#    #+#             */
-/*   Updated: 2023/08/14 22:38:01 by ssibai           ###   ########.fr       */
+/*   Updated: 2023/08/26 16:47:02 by ssibai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@
 	this function is to initialize the list
 	returns true if list was set
 */
-int	set_list(t_list **head)
+void	set_list(t_list **head)
 {
 	*head = (t_list *)malloc(sizeof(t_list));
 	if (!*head)
-		return (0);
-	(*head)->content = 0;
+		return;
+	(*head) -> content = 0;
 	(*head) -> next = NULL;
-	return (1);
 }
 
 /*
@@ -41,9 +40,9 @@ int	fill_list(char *buff, t_list *head)
 	{
 		temp -> content = *buff;
 		temp -> next = (t_list *)malloc(sizeof(t_list));
-		temp = temp -> next;
-		if (!temp)
+		if (!temp->next)
 			return (0);
+		temp = temp -> next;
 		buff++;
 	}
 	// free (temp);
@@ -57,23 +56,23 @@ int	fill_list(char *buff, t_list *head)
 	1) returns 0 if the list is empty
 	2) returns length when endline is found OR when temp is != null
 */
-int	line_finder(t_list *head)
+int	line_finder(t_list **head)
 {
-	t_list	*iterator;
-	t_list	*temp;
+	printf("finding line \n");
+	t_list	**iterator;
 	int		i;
 
 	i = 0;
-	iterator = head;
-	while (iterator)
+	(*iterator) = (*head);
+	while (*iterator)
 	{
-		if (iterator -> content == '\n')
+		if ((*iterator) -> content == '\n')
+		{
+			printf("%d\n", i);
 			return (i);
+		}
 		i++;
-		temp = iterator;
-		iterator = iterator -> next;
-		
-		// free (temp);
+		(*iterator) = (*iterator) -> next;
 	}
 	return (-1);
 }
@@ -86,11 +85,12 @@ char	cpy_list(t_list **head)
 	char	c;
 	t_list	**temp;
 	
-	*temp = (*head);
+	*temp = *head;
 	c = (*head) -> content;
 	(*head) = (*head) -> next;
+	//head = head->next;
 	free (*temp);
 	*temp = NULL;
+	printf("copied list\n");
 	return	c;
 }
-
