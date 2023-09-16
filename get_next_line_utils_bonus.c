@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssibai <ssibai@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/29 19:46:29 by ssibai            #+#    #+#             */
-/*   Updated: 2023/09/10 16:04:58 by ssibai           ###   ########.fr       */
+/*   Created: 2023/09/09 18:38:31 by ssibai            #+#    #+#             */
+/*   Updated: 2023/09/10 16:04:23 by ssibai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
-/*
-	checks what the value inside copy is.
-	if we call it before we read, we do not free the buffer since we
-	haven't malloced
-	for it yet.
-*/
 char	*check_cpy(char **cpy, char **buff, int after_reed)
 {
 	int	index;
