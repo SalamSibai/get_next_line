@@ -1,4 +1,4 @@
-#include "get_next_line.h"
+/*#include "get_next_line.h"
 
 int main()
 {
@@ -8,4 +8,4 @@ int main()
 	printf("%s\n", get_next_line(fd));
 	printf("%s\n", get_next_line(fd));
 	return 0;
-}
+}*/
